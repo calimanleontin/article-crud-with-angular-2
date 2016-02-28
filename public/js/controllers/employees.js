@@ -11,6 +11,7 @@ app.controller('employeesController', function($scope, $http, API_URL) {
 
         switch (modalstate) {
             case 'add':
+                $scope.employee = null;
                 $scope.form_title = "Add New Employee";
                 break;
             case 'edit':
@@ -72,5 +73,9 @@ app.controller('employeesController', function($scope, $http, API_URL) {
         } else {
             return false;
         }
+    }
+
+    $scope.empty = function(){
+        $scope.employee = null;
     }
 });
