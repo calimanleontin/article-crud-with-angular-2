@@ -7,6 +7,10 @@ $(document).ready(function(){
     $("#btn-edit").click(function(){
         $("#myModal").show();
     });
+
+    $("#hide").click(function(){
+        $("#myModal").hide();
+    });
 });
 
 var app = angular.module('employeeRecords', [])
