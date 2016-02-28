@@ -18,4 +18,28 @@ class EmployeeController extends Controller
         else
             return $this->show($id);
     }
+
+    public function store(Request $request)
+    {
+        $employee = new Employee();
+
+        $employee->name = Input::get('name');
+        $employee->email = Input::get('email');
+        $employee->contact_number = Input::get('contact_number');
+        $employee->position = Input::get('position');
+        $employee->save();
+        return 'Success #'.$employee->id;
+    }
+
+    public function update(Request $request, $id) {
+        $employee = Employee::find($id);
+
+        $employee->name = Input::get('name');
+        $employee->email = Input::get('email');
+        $employee->contact_number = Input::get('contact_number');
+        $employee->position = Input::get('position');
+        $employee->save();
+
+        return "Success #" . $employee->id;
+    }
 }
