@@ -42,4 +42,12 @@ class EmployeeController extends Controller
 
         return "Success #" . $employee->id;
     }
+
+    public function destroy() {
+        $employee = Employee::find(Input::get('id'));
+
+        $employee->delete();
+
+        return "Success #" . Input::get('id');
+    }
 }
