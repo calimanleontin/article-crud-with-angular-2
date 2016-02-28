@@ -2,7 +2,26 @@
 <html lang="en-US" ng-app="employeeRecords">
 <head>
     <title>Laravel 5 AngularJS CRUD Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
+    <script src="http://www.iclubz.com/js/jquery.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <script src="http://www.iclubz.com/js/readmore.min.js"></script>
+
+    <script src="http://www.iclubz.com/js/chosen.jquery.js"></script>
+
+    <script src="http://www.iclubz.com/js/jquery.validate.min.js"></script>
+
+    <script src="http://www.iclubz.com/js/fileinput.min.js"></script>
+
+
+    <!-- Load Bootstrap CSS -->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -13,9 +32,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <!-- JS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script> <!-- load angular -->
+    <link href="css/app.css" rel="stylesheet">
 
 </head>
 <body>
@@ -42,7 +59,7 @@
             <td>{{ employee.contact_number }}</td>
             <td>{{ employee.position }}</td>
             <td>
-                <button class="btn btn-default btn-xs btn-detail" ng-click="toggle('edit', employee.id)">Edit</button>
+                <button class="btn btn-default btn-xs btn-detail" id = "btn-edit" ng-click="toggle('edit', employee.id)">Edit</button>
                 <button class="btn btn-danger btn-xs btn-delete" ng-click="confirmDelete(employee.id)">Delete</button>
             </td>
         </tr>
@@ -50,11 +67,10 @@
     </table>
     <!-- End of Table-to-load-the-data Part -->
     <!-- Modal (Pop up when detail button clicked) -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="ceva" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  >
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                     <h4 class="modal-title" id="myModalLabel">{{form_title}}</h4>
                 </div>
                 <div class="modal-body">
@@ -65,7 +81,8 @@
                             <div class="col-sm-9">
                                 <input type="text" class="form-control has-error" id="name" name="name" placeholder="Fullname" value="{{name}}"
                                        ng-model="employee.name" ng-required="true">
-                                        <span class="help-inline" ng-show="frmEmployees.name.$invalid && frmEmployees.name.$touched">Name field is required</span>
+                                        <span class="help-inline"
+                                              ng-show="frmEmployees.name.$invalid && frmEmployees.name.$touched">Name field is required</span>
                             </div>
                         </div>
 
@@ -74,7 +91,8 @@
                             <div class="col-sm-9">
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" value="{{email}}"
                                        ng-model="employee.email" ng-required="true">
-                                        <span class="help-inline" ng-show="frmEmployees.email.$invalid && frmEmployees.email.$touched">Valid Email field is required</span>
+                                        <span class="help-inline"
+                                              ng-show="frmEmployees.email.$invalid && frmEmployees.email.$touched">Valid Email field is required</span>
                             </div>
                         </div>
 
@@ -83,7 +101,8 @@
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Contact Number" value="{{contact_number}}"
                                        ng-model="employee.contact_number" ng-required="true">
-                                    <span class="help-inline" ng-show="frmEmployees.contact_number.$invalid && frmEmployees.contact_number.$touched">Contact number field is required</span>
+                                    <span class="help-inline"
+                                          ng-show="frmEmployees.contact_number.$invalid && frmEmployees.contact_number.$touched">Contact number field is required</span>
                             </div>
                         </div>
 
@@ -106,7 +125,9 @@
         </div>
     </div>
 </div>
-<src="<?= asset('js/bootstrap.min.js') ?>"></script>
+
+
+
 
 <!-- AngularJS Application Scripts -->
 <script src="<?= asset('js/app.js') ?>"></script>

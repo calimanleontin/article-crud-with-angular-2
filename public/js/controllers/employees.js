@@ -19,6 +19,7 @@ app.controller('employeesController', function($scope, $http, API_URL) {
                 $http.get(API_URL + 'employees/' + id)
                     .success(function(response) {
                         console.log(response);
+                        $("#myModal").show();
                         $scope.employee = response;
                     });
                 break;
@@ -26,8 +27,8 @@ app.controller('employeesController', function($scope, $http, API_URL) {
                 break;
         }
         console.log(id);
-        $('#myModal').modal('show');
-    }
+
+    };
 
     //save new record / update existing record
     $scope.save = function(modalstate, id) {
