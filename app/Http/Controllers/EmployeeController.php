@@ -14,12 +14,12 @@ class EmployeeController extends Controller
     public function index($id = null)
     {
         if($id == null)
-            return Employee::all()->get();
+            return Response::json(Employee::all());
         else
             return $this->show($id);
     }
 
-    public function store(Request $request)
+    public function store()
     {
         $employee = new Employee();
 
@@ -28,7 +28,7 @@ class EmployeeController extends Controller
         $employee->contact_number = Input::get('contact_number');
         $employee->position = Input::get('position');
         $employee->save();
-        return 'Success #'.$employee->id;
+        return Response::json(array('Success' => true));
     }
 
     public function update(Request $request, $id) {
@@ -40,7 +40,7 @@ class EmployeeController extends Controller
         $employee->position = Input::get('position');
         $employee->save();
 
-        return "Success #" . $employee->id;
+        return Response::json(array('Success' => true));
     }
 
     public function destroy() {
@@ -48,10 +48,10 @@ class EmployeeController extends Controller
 
         $employee->delete();
 
-        return "Success #" . Input::get('id');
+        return Response::json(array('Success' => true));
     }
 
     public function show($id) {
-        return Employee::find($id);
+        return Response::json(Employee::find($id));
     }
 }
