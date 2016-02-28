@@ -43,8 +43,8 @@ class EmployeeController extends Controller
         return Response::json(array('Success' => true));
     }
 
-    public function destroy() {
-        $employee = Employee::find(Input::get('id'));
+    public function destroy($id) {
+        $employee = Employee::find($id);
 
         $employee->delete();
 

@@ -31,6 +31,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/employees/{id?}', 'EmployeeController@index');
     Route::post('/employees', 'EmployeeController@store');
     Route::post('/employees/{id}', 'EmployeeController@update');
-    Route::get('/employees/{id}', 'EmployeeController@delete');
+    Route::delete('/employees/delete/{id}', 'EmployeeController@destroy');
 
 });
