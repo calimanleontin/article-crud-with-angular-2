@@ -50,4 +50,8 @@ class EmployeeController extends Controller
 
         return "Success #" . Input::get('id');
     }
+
+    public function show($id) {
+        return Employee::find($id);
+    }
 }

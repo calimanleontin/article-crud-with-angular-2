@@ -27,5 +27,10 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+
+    Route::get('/employees/{id?}', 'EmployeeController@index');
+    Route::post('/employees', 'EmployeeController@store');
+    Route::post('/employess/{id}', 'EmployeeController@update');
+    Route::get('/employees/{id}', 'EmployeeController@delete');
+
 });
