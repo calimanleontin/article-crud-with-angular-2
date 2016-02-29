@@ -39,7 +39,8 @@
 <div  ng-controller="employeesController">
 
     <!-- Table-to-load-the-data Part -->
-    <table class="table">
+    <div class="col-md-10">
+    <table class="table table-bordered table-responsive table-hover">
         <thead>
         <tr>
             <th>ID</th>
@@ -64,6 +65,7 @@
         </tr>
         </tbody>
     </table>
+    </div>
     <!-- End of Table-to-load-the-data Part -->
     <!-- Modal (Pop up when detail button clicked) -->
     <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  >
