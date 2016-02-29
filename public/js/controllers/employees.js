@@ -47,21 +47,13 @@ angular.module('employees', [])
         $scope.confirmDelete = function(id) {
             var isConfirmDelete = confirm('Are you sure you want this record?');
             if (isConfirmDelete) {
-                $http({
-                    method: 'DELETE',
-                    url: API_URL + 'employees/delete/' + id
-                }).
-                success(function(data) {
-                    console.log(data);
-                    $http.get(API_URL + 'employees')
-                        .success(function(data){
-                            $scope.employees = data;
-                        });
-                }).
-                error(function(data) {
-                    console.log(data);
-                    alert('Unable to delete');
-                });
+                Employee.destroy(id)
+                    .success(function(data){
+                        Employee.get()
+                            .success(function (getData) {
+                                $scope.employees = getData;
+                            });
+                    });
             } else {
                 return false;
             }

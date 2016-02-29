@@ -26,7 +26,7 @@ angular.module('employeeService', [])
 
             destroy : function(id)
             {
-                return $http.delete('/employees' + id);
+                return $http.delete('/employees/delete/' + id);
             }
         }
     });
