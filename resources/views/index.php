@@ -130,5 +130,6 @@
 <!-- AngularJS Application Scripts -->
 <script src="<?= asset('js/app.js') ?>"></script>
 <script src="<?= asset('js/controllers/employees.js') ?>"></script>
+<script src="<?= asset('js/services/employeeService.js') ?>"></script> <!-- load our service -->
 </body>
 </html>

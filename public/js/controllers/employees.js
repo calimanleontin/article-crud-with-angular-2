@@ -1,9 +1,9 @@
 angular.module('employees', [])
-    .controller('employeesController', function($scope, $http, API_URL) {
+    .controller('employeesController', function($scope, $http, API_URL, Employee) {
         //retrieve employees listing from API
-        $http.get(API_URL + "employees")
-            .success(function(response) {
-                $scope.employees = response;
+        Employee.get()
+            .success(function(data){
+                $scope.employees = data;
             });
 
         //show modal form
@@ -17,13 +17,10 @@ angular.module('employees', [])
                     break;
                 case 'edit':
                     $scope.form_title = "Employee Detail";
-                    $scope.id = id;
-                    $http.get(API_URL + 'employees/' + id)
-                        .success(function(response) {
-                            console.log(response);
-                            $scope.employee = response;
+                    Employee.one(id)
+                        .success(function(data){
+                            $scope.employee = data;
                         });
-                    break;
                 default:
                     break;
             }
@@ -35,27 +32,15 @@ angular.module('employees', [])
         $scope.save = function(modalstate, id) {
             var url = API_URL + "employees";
 
-            //append employee id to the URL if the form is in edit mode
-            if (modalstate === 'edit'){
-                url += "/" + id;
-            }
+            Employee.edit($scope.employee)
+                .success(function(data){
+                    Employee.get()
+                        .success(function (data) {
+                            $scope.employees = data;
+                            $('#myModal').modal('hide');
+                        });
+                });
 
-            $http({
-                method: 'POST',
-                url: url,
-                data: $.param($scope.employee),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function(response) {
-                console.log(response);
-                $http.get(API_URL + 'employees')
-                    .success(function(getData){
-                        $scope.employees = getData;
-                        location.reload();
-                    });
-            }).error(function(response) {
-                console.log(response);
-                alert('This is embarassing. An error has occured. Please check the log for details');
-            });
         }
 
         //delete record
