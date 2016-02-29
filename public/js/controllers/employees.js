@@ -47,7 +47,11 @@ app.controller('employeesController', function($scope, $http, API_URL) {
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(response) {
             console.log(response);
-            location.reload();
+            $http.get(API_URL + 'employees')
+                .success(function(getData){
+                    $scope.employees = getData;
+                    location.reload();
+                });
         }).error(function(response) {
             console.log(response);
             alert('This is embarassing. An error has occured. Please check the log for details');
@@ -64,7 +68,10 @@ app.controller('employeesController', function($scope, $http, API_URL) {
             }).
             success(function(data) {
                 console.log(data);
-                location.reload();
+                $http.get(API_URL + 'employees')
+                    .success(function(data){
+                        $scope.employees = data;
+                    });
             }).
             error(function(data) {
                 console.log(data);
